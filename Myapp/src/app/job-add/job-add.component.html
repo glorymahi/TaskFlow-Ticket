@@ -1,0 +1,113 @@
+<div class="text-center"><h1> Add Job Details</h1></div>
+
+<div class="container">
+    <div class="super_container" style="background-color:lightgrey ;
+    background-repeat: no-repeat; background-size: cover; position: static">
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+        <div class="form-group col-5">
+          <b><label>JobID</label></b>
+            <input type="text" formControlName="JobID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.JobID.errors }" />
+            <div *ngIf="submitted && f.JobID.errors" class="invalid-feedback">
+                <div *ngIf="f.JobID.errors.required">Name is required</div>
+            </div>
+        </div>
+    
+            <div class="form-group col-5">
+                <b><label>Title</label></b>
+                <input type="text" formControlName="Title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Title.errors }" />
+                <div *ngIf="submitted && f.Title.errors" class="invalid-feedback">
+                    <div *ngIf="f.Title.errors.required">Title is required</div>
+                </div>
+            </div>
+
+
+            <div class="form-group col-5">
+                <b><label>Emp</label></b>
+                <input type="text" formControlName="Emp" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Emp.errors }" />
+                <div *ngIf="submitted && f.Emp.errors" class="invalid-feedback">
+                    <div *ngIf="f.Emp.errors.required">Emp is required</div>
+                </div>
+
+            </div>
+            <div class="form-group col-5">
+                <b><label>ActualStartTime</label></b>
+                <input type="text" formControlName="ActualStartTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ActualStartTime.errors }" />
+                <div *ngIf="submitted && f.ActualStartTime.errors" class="invalid-feedback">
+                    <div *ngIf="f.ActualStartTime.errors.required">ActualStartTime is required</div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group col-5">
+                <b><label>ActualEndTime</label></b>
+                <input type="text" formControlName="ActualEndTime" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ActualEndTime.errors }" />
+                <div *ngIf="submitted && f.ActualEndTime.errors" class="invalid-feedback">
+                    <div *ngIf="f.ActualStartTime.errors.required">ActualEndTime is required</div>
+                </div>
+                </div>
+
+                <div class="form-group col-5">
+                    <b><label>Category</label></b>
+                    <input type="text" formControlName="Category" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Category.errors }" />
+                    <div *ngIf="submitted && f.Category.errors" class="invalid-feedback">
+                        <div *ngIf="f.Category.errors.required">Category is required</div>
+                    </div>
+                    </div>
+
+
+                    <div class="form-group col-5">
+                        <b><label>Schedule</label></b>
+                        <select class="custom-select" (change)="changeDesignation($event)" formControlName="Schedule">
+                          <option value="">Select Schedule</option>
+                          <option *ngFor="let schedule of Schedule" [ngValue]="Schedule">{{designation}}</option>
+                        </select>
+                        <div *ngIf="submitted && f.Schedule.errors" class="invalid-feedback">
+                            <div *ngIf="f.Schedule.errors.required">Schedule is required</div>
+                        </div>
+                    </div>
+
+
+                </form>
+    
+    
+
+            
+             &nbsp; &nbsp; <label>CheckList</label>
+             <div formArrayName="controllerArray" >
+                  <div *ngFor="let item of formName.controls.controllerArray.controls; let i=index" [formGroupName]="i">
+                    <input formControlName="controlerInputName1">
+                    <button (click)='removeInput(i)'>remove input</button>
+                  </div>
+                </div>
+              <button (click)='addInput()'><b><i>Add</i></b></button>
+               
+
+               <div class="text-center">
+                <button [disabled]='!registerForm.valid' class="btn btn-success" type="submit">Submit</button> &nbsp;
+                 <button class="btn btn-danger" type="reset">Cancel&nbsp; &nbsp; </button>
+            </div>
+
+            </div>
+            
+               
+        </div>
+
+    
+
+
+                <!-- <div class="form-group col-5">
+                    <b><label>Designation</label></b>
+                    <select class="custom-select" (change)="changeDesignation($event)" formControlName="Designation">
+                      <option value="">Select Designation</option>
+                      <option *ngFor="let designation of Designation" [ngValue]="designation">{{designation}}</option>
+                    </select>
+                    <div *ngIf="submitted && f.Designation.errors" class="invalid-feedback">
+                        <div *ngIf="f.Designation.errors.required">Designation is required</div>
+                    </div>
+                </div>
+            </div> -->
+
+       

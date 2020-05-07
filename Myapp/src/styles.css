@@ -1,0 +1,35 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+mat-sidenav {
+    width: 280px;
+    padding:15px;
+}
+.mat-drawer { 
+    background-color: #000000;
+    color:#fff
+}
+.main-content {
+    padding:20px;
+}
+.toolbar-spacer {
+    flex: 1 1 auto;
+}
+.mat-toolbar.mat-primary {
+    background: #000000;
+    color: #fff;
+}
+p,th,td,div{
+    font-size: 14px;
+}
+@font-face {
+    font-family: Lato;
+    src: url(/assets/fonts/Lato.woff2) format('woff2'),
+         url(/assets/fonts/Lato.woff) format('woff');
+  }
+  h2,p,th,td,label{
+    font-family: Lato, sans-serif;
+  }
+  mat-button
+  {
+      margin-left: auto;
+  }

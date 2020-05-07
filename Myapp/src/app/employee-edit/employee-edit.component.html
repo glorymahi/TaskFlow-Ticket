@@ -1,0 +1,159 @@
+<div class="text-center"><h1> Edit Employee</h1></div>
+<div class="container">
+    <div class="super_container" style="background-color:lightgrey ;
+    background-repeat: no-repeat; background-size: cover; position: static">
+                <label>Identity and Name</label><br>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group col-5">
+
+            <b><label>Employee ID</label></b>
+            <input disabled="true" type="text" formControlName="EmployeeID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.EmployeeID.errors }" />
+            <div *ngIf="submitted && f.EmployeeID.errors" class="invalid-feedback">
+                <div *ngIf="f.EmployeeID.errors.required">EmployeeID is required</div>
+            </div>
+        </div>
+
+        <div class="form-group col-5">
+            <b><label>Designation</label></b>
+            <select class="custom-select" (change)="changeDesignation($event)" formControlName="Designation">
+              <option value="">Select Designation</option>
+              <option *ngFor="let designation of Designation" [ngValue]="designation">{{designation}}</option>
+            </select>
+            <div *ngIf="submitted && f.Designation.errors" class="invalid-feedback">
+                <div *ngIf="f.Designation.errors.required">Designation is required</div>
+            </div>
+        </div>
+    </div>
+       <div class="form-row">
+        <div class="form-group col-5">
+            <b><label>FirstName</label></b>
+            <input type="text" formControlName="FirstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }" />
+            <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                <div *ngIf="f.FirstName.errors.required">FirstName is required</div>
+            </div>
+        </div>
+
+        <div class="form-group col-5">
+            <b><label>LastName</label></b>
+            <input type="text" formControlName="LastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }" />
+            <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+                <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+            </div>
+        </div>
+    </div>
+
+<div class="form-row">
+        <div class="form-group col-5">
+            <b><label>MobileNumber</label></b>
+            <input type="text" formControlName="MobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.MobileNumber.errors }" />
+            <div *ngIf="submitted && f.MobileNumber.errors" class="invalid-feedback">
+                <div *ngIf="f.MobileNumber.errors.required">MobileNumber is required</div>
+            </div>
+        </div>
+
+        <div class="form-group col-5">
+            <b><label>Email</label></b>
+            <input type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" />
+            <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                <div *ngIf="f.Email.errors.required">Email is required</div>
+            </div>
+        </div>
+    </div>
+
+    <b><label>Client info</label></b>
+      <div class="form-row">
+        <div class="form-group col-5">
+            <select class="custom-select" (change)="changeClient($event)" formControlName="Client">
+              <option value="">Select Client</option>
+              <option *ngFor="let client of Client" [ngValue]="client">{{client}}</option>
+            </select>
+            <div *ngIf="submitted && f.Client.errors" class="invalid-feedback">
+                <div *ngIf="f.Client.errors.required">Client is required</div>
+            </div>
+        </div>
+
+
+        <div class="form-group col-5">
+            <select class="custom-select" (change)="changeSite($event)" formControlName="Site">
+              <option value="">Select Site</option>
+              <option *ngFor="let site of Site" [ngValue]="site">{{site}}</option>
+            </select>
+            <div *ngIf="submitted && f.Designation.errors" class="invalid-feedback">
+                <div *ngIf="f.Site.errors.required">Site is required</div>
+            </div>
+        </div>
+       <!-- <div class="text-center">
+            <button [disabled]='!registerForm.valid' class="btn btn-success" type="submit">Add</button> &nbsp;
+            &nbsp; &nbsp; &nbsp;
+
+    </div> -->
+</div>
+    
+<label>Role</label><br>
+<div class="form-group col-5">
+<b><label>User Role</label></b>
+<select class="custom-select" (change)="changeUserRole($event)" formControlName="UserRole">
+<option value="">Select role</option>
+<option *ngFor="let userRole of UserRole" [ngValue]="userRole">{{userRole}}</option>
+</select>
+<div *ngIf="submitted && f.UserRole.errors" class="invalid-feedback">
+<div *ngIf="f.UserRole.errors.required">UserRole is required</div>
+</div>
+</div>
+
+<label>Location</label>
+<div class="form-row">
+<div class="form-group col-5">
+    <b><label>Block</label></b>
+    <select class="custom-select" (change)="changeBlock($event)" formControlName="Block">
+      <option value="">Select Block</option>
+      <option *ngFor="let block of Block" [ngValue]="block">{{block}}</option>
+    </select>
+    <div *ngIf="submitted && f.Block.errors" class="invalid-feedback">
+        <div *ngIf="f.Block.errors.required">Block is required</div>
+    </div>
+</div>
+
+
+<div class="form-group col-5">
+    <b><label>Floor</label></b>
+    <select class="custom-select" (change)="changeFloor($event)" formControlName="Floor">
+      <option value="">Select Floor</option>
+      <option *ngFor="let floor of Floor" [ngValue]="floor">{{floor}}</option>
+    </select>
+    <div *ngIf="submitted && f.Floor.errors" class="invalid-feedback">
+        <div *ngIf="f.Floor.errors.required">Floor is required</div>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <b><label>Zone</label></b>
+    <select class="custom-select" (change)="changeZone($event)" formControlName="Zone">
+      <option value="">Select Zone</option>
+      <option *ngFor="let zone of Zone" [ngValue]="zone">{{zone}}</option>
+    </select>
+    <div *ngIf="submitted && f.Zone.errors" class="invalid-feedback">
+        <div *ngIf="f.Zone.errors.required">Floor is required</div>
+    </div>
+    
+</div>
+
+<!-- <div class="text-center">
+    &nbsp; &nbsp; &nbsp; <button  class="btn btn-success"  type="submit">Add</button> &nbsp;
+    
+
+</div> -->
+</div>
+
+<div class="text-center">
+    <button  class="btn btn-success" (click)="updateEmployee(registerForm.value)" type="submit">Update</button> &nbsp;
+     <button class="btn btn-danger" type="reset">Cancel&nbsp; &nbsp; </button>
+</div>
+
+
+</form>
+ </div>
+</div>
+

@@ -1,0 +1,202 @@
+<!-- <div class="container">
+
+        <br>
+        <h2>Add Client Details</h2><br>
+        <form>
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="form-group">
+                    <label for="first">First Name</label>
+                    <input type="text" class="form-control" placeholder="" id="first">
+                </div>
+            </div> -->
+            <!--  col-md-6   -->
+
+            <!-- <div class="col-md-6 ">
+                <div class="form-group">
+                    <label for="last">Last Name</label>
+                    <input type="text" class="form-control" placeholder="" id="last">
+                </div>
+            </div> -->
+            <!--  col-md-6   -->
+        <!-- </div>
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" class="form-control" placeholder="" id="company">
+                </div>
+
+
+            </div> -->
+            <!--  col-md-6   -->
+
+            <!-- <div class="col-md-6">
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="phone">
+                </div>
+            </div> -->
+            <!--  col-md-6   -->
+        <!-- </div> -->
+        <!--  row   -->
+
+
+        <!-- <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="email">
+                </div>
+            </div> -->
+            <!--  col-md-6   -->
+
+            <!-- <div class="col-md-6">
+                <div class="form-group">
+                    <label for="url">Your Website</label>
+                    <input type="url" class="form-control" id="url" placeholder="url">
+                </div>
+
+            </div> -->
+            <!--  col-md-6   -->
+        <!-- </div> -->
+        <!--  row   -->
+
+
+
+        <!-- <button type="submit" class="btn btn-success btns">Submit</button>
+    </form>
+</div> -->
+
+<!-- -------------------------------------------------- -->
+
+
+<div class="text-center"><h1> Add Client</h1></div>
+
+<div class="container">
+    <div class="super_container" style="background-color:lightgrey ;
+    background-repeat: no-repeat; background-size: cover; position: static">
+    
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      
+        <div class="form-group col-5">
+            <label>Client Name and Location</label><br>
+            <b><label>Name</label></b>
+            <input type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }" />
+            <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                <div *ngIf="f.Name.errors.required">Name is required</div>
+            </div>
+        </div>
+    
+            <br>
+            <div class="form-group col-5">
+                <b><label>Address</label></b>
+                <input type="text" formControlName="Address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Address.errors }" />
+                <div *ngIf="submitted && f.Address.errors" class="invalid-feedback">
+                    <div *ngIf="f.Address.errors.required">First Name is required</div>
+                </div>
+            </div>
+
+
+            <div class="form-group col-5">
+               <b><label>Group</label></b> 
+                <select class="custom-select" (change)="changeGroup($event)" formControlName="Group">
+                  <option value="">Select Client Group</option>
+                  <option *ngFor="let group of Group" [ngValue]="group">{{group}}</option>
+                </select>
+                <div *ngIf="submitted && f.Group.errors" class="invalid-feedback">
+                    <div *ngIf="f.Group.errors.required">Group is required</div>
+                </div>
+            </div>
+
+
+<label>Contact info</label>
+<div class="form-row">
+            <div class="form-group col-5">
+                <b><label>FirstName</label></b>
+                <input type="text" formControlName="FirstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }" />
+                <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.FirstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+
+
+            <div class="form-group col-5">
+                <b><label>LastName</label></b>
+                <input type="text" formControlName="LastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }" />
+                <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+                </div>
+            </div>
+        </div>
+<div class="form-row">
+            <div class="form-group col-5">
+                <b><label>MobileNumber</label></b>
+                <input type="text" formControlName="MobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.MobileNumber.errors }" />
+                <div *ngIf="submitted && f.MobileNumber.errors" class="invalid-feedback">
+                    <div *ngIf="f.MobileNumber.errors.required">Mobilenumber is required</div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group col-5">
+                <b><label>Email</label></b>
+                <input type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }" />
+                <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+                    <div *ngIf="f.Email.errors.required">Email is required</div>
+                </div>
+            </div>
+        </div> 
+        
+        <label><b>Address</b></label>
+        <div class="row">
+        <div class="form-group col-5">
+            <b><label>City</label></b> 
+             <select class="custom-select" (change)="changeCity($event)" formControlName="City">
+               <option value="">Select City</option>
+               <option *ngFor="let city of City" [ngValue]="city">{{city}}</option>
+             </select>
+             <div *ngIf="submitted && f.City.errors" class="invalid-feedback">
+                 <div *ngIf="f.City.errors.required">City is required</div>
+             </div>
+         </div>
+
+<div class="row">
+         <div class="form-group col-5">
+            <b><label>State</label></b> 
+             <select class="custom-select" (change)="changeState($event)" formControlName="State">
+               <option value="">Select State</option>
+               <option *ngFor="let state of State" [ngValue]="state">{{state}}</option>
+             </select>
+             <div *ngIf="submitted && f.State.errors" class="invalid-feedback">
+                 <div *ngIf="f.State.errors.required">State is required</div>
+             </div>
+         </div>
+
+
+         <div class="form-group col-5">
+            <b><label>Pincode</label></b>
+            <input type="text" formControlName="Pincode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Pincode.errors }" />
+            <div *ngIf="submitted && f.Pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.Pincode.errors.required">Pincode is required</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    
+
+
+
+
+    <div class="text-center">
+        <button  class="btn btn-success" type="submit">Save</button> &nbsp;
+        &nbsp; &nbsp; &nbsp; <button class="btn btn-danger" type="reset">Cancel&nbsp; &nbsp; </button>
+    </div>
+</form>
+</div>

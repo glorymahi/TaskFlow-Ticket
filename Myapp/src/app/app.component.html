@@ -1,0 +1,17 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav mode="side" #sidenav closed position="start">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+     <div *ngIf="authentocationService.isUserLoggedIn()"><i class="fa fa-user user"></i>  {{user}} </div>
+     <br>
+      <a *ngIf="authentocationService.isUserLoggedIn()"  mat-button class="log" (click)="logout()">
+         Logout</a>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

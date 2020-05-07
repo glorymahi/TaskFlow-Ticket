@@ -1,0 +1,75 @@
+<div class="container" #TABLE #table>
+    <div class="row">
+        <h2>Employee Details</h2>
+        <div class="col-md-3">
+        <input type="file" (change)="onFileChange($event)" multiple="false" >
+            <br>
+            <button (click)="exportAsXLSX()" class="btn btn-success">Export</button>&nbsp;
+            <button type="button" class="btn btn-success" (click)="add()">Add&nbsp;<i class="fa fa-plus"></i></button>
+
+        </div>
+        
+            <table class="table table-bordered">
+                <tbody>
+              <tr *ngFor="let row of data">
+                    <td *ngFor="let val of row">
+                        {{val}}
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+            
+        
+    </div>
+    <br>
+    <div class="col-xs-3">
+    <input class="form-control" type="text" 
+      name="search" [(ngModel)]="searchText"
+       autocomplete="off" placeholder="&#61442; 
+        Start searching for a employee ">
+        <div *ngIf="(employees | filter: searchText).length === 0">No matching records found</div>
+        </div>
+        <br> <br><br>
+        <!-- <div id="loadImageBootstrapStyleDiv" style="background-color:black; width: 520px; padding: 10px">
+            <img src="http://localhost:8013/downloadFile/1" class="rounded" alt="Grokonez-About Image" width="250px" height="auto"> -->
+            <!-- <img src="http://localhost:8013/downloadFile/15" class="rounded-circle" alt="Grokonez-About Image" width="250px" height="auto"> -->
+          <!-- </div> -->
+    <div class="row">
+        <div class="col-md-12">
+            <table width="100%" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>EmployeeID</th>
+                        <th>FirstName</th>
+                        <th>MobileNumber</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees | filter:searchText | paginate: { itemsPerPage: 5, currentPage: p }">
+                       
+                        <td width="10%">{{employee.empid}}</td>
+                        <td width="10%">{{employee.firstName}}</td>
+                        <td width="10%">{{employee.mobile}}</td>
+                        <td width="10%">{{employee.email}}</td>
+                       
+                        <td width="20%">
+                            <button *ngIf="!isEditable" mat-icon-button (click)="onEditClick(employee.empid)">
+                                
+                                <mat-icon>edit</mat-icon>
+                              </button>
+                              <button *ngIf="!isEditable" mat-icon-button (click)="ondeleteClick(employee.empid)">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                        </td>
+
+                    </tr>
+                   
+                </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
